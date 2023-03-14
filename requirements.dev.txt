@@ -1,5 +1,5 @@
 # linters
-mypy>=0.971,<1.0
+isort==5.12.0
 wemake-python-styleguide>=0.14.0,<1.0
 
 # tests

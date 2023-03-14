@@ -2,13 +2,18 @@
 
 # commands
 lint:
-	@mypy development
+	@isort development
 	@flake8 development
 
 test:
 	@pytest
 
-dev.install:
+install:
 	@pip install -U -r requirements.dev.txt
 	@pip install -U -r requirements.txt
+
+run.cow_say:
+	@python
+
+build: install lint test
 
