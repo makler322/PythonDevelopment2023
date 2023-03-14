@@ -1,6 +1,6 @@
 import pytest
 
-from development.PushPip.cow_say import Worker
+from development.PushPip.cow_say import Worker, Parser
 from argparse import Namespace
 
 
@@ -10,5 +10,6 @@ def worker_cow_say() -> Worker:
 
 
 @pytest.fixture
-def default_cow_params() -> Namespace:
-    return Namespace(e="xx", T="SS", W=60)
+def namespace_cow_say() -> Namespace:
+    parser = Parser()
+    return parser.parse_args()

@@ -12,7 +12,7 @@ import development
 class Config(BaseModel):
     """Config class."""
 
-    arguments: Dict[Dict[str, Any]]
+    arguments: Dict[str, Dict[str, Any]]
 
 
 def load_config(config_file: Optional[Path] = None) -> Config:

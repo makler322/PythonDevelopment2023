@@ -1,8 +1,9 @@
 """Module for first task."""
 
+import sys
 from argparse import ArgumentParser, Namespace
 from pathlib import Path
-from typing import Union
+from typing import Any, Union
 
 from cowsay import cowsay, list_cows
 from pydantic import BaseModel
@@ -13,6 +14,8 @@ from development.config import load_config
 
 class Parser(BaseModel):
     """Parser class."""
+
+    parser: Any
 
     def __init__(
         self,
@@ -44,24 +47,14 @@ class Parser(BaseModel):
         config_args = load_config(
             Path(PushPip.__file__).parent / 'config.yml',
         ).arguments
-        for arg in config_args:
-            flag, flag_params = arg.values()
+        for flag, flag_params in config_args.items():
             self.parser.add_argument(flag, **flag_params)
 
 
 class Worker(BaseModel):
     """Parser class."""
 
-    def __init__(self, cow: str = 'default'):
-        """
-        Get params from config.
-
-        Args:
-            cow: Default cow params.
-        """
-        super().__init__()
-        self.cow = cow
-        self.print_elem = None
+    cow: str = 'default'
 
     def run(self, args: Namespace) -> Union[list[str], str]:
         """
@@ -73,20 +66,18 @@ class Worker(BaseModel):
         Returns:
             Elem for pint
         """
-        self.cow = args.cowfile if args.cowfile in list_cows() else self.cow
+        cow = args.cowfile if args.cowfile in list_cows() else self.cow
         cowfile_path = args.cowfile if '/' in args.cowfile else None
-        self.print_elem = list_cows() if args.list else cowsay(
-            cow=self.cow,
+        return cowsay(
+            cow=cow,
             eyes=args.eyes[:2],
             cowfile=cowfile_path,
-            wrap_text=args.wrapped,
+            wrap_text=args.wrap_text,
             tongue=args.tongue[:2],
             width=args.width,
-            preset=max(args.apearence),
+            preset=max(args.preset),
             message=args.message,
         )
-
-        return self.print_elem
 
 
 if __name__ == '__main__':
@@ -94,4 +85,4 @@ if __name__ == '__main__':
     worker = Worker()
 
     args = parser.parse_args()
-    worker.run(args)
+    sys.stdout.write(worker.run(args))

@@ -32,7 +32,6 @@ arguments:
     action: 'store'
     required: False
     default: 40
-    type: int
     help: 'Specifies roughly where the message should be wrapped'
   -b:
     dest: 'preset'
