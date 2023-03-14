@@ -1,0 +1,96 @@
+arguments:
+  -e:
+    dest: 'eyes'
+    action: 'store'
+    required: False
+    default: 'oo'
+    help: 'The appearance of the cow eyes. The first two characters of the argument string eye_string will be used'
+  -f:
+    dest: 'cowfile'
+    action: 'store'
+    required: False
+    default: ''
+    help: 'Specifies a particular cow picture file to use'
+  -n:
+    dest: 'wrap_text'
+    action: 'store_false'
+    required: False
+    help: 'If specified, the given message will not be word-wrapped'
+  -l:
+    dest: 'list'
+    action: 'store_false'
+    required: False
+    help: 'List all cowfiles on the current COWPATH'
+  -T:
+    dest: 'tongue'
+    action: 'store'
+    required: False
+    default: ''
+    help: 'The appearance of the cow tongue. Must be two characters'
+  -W:
+    dest: 'width'
+    action: 'store'
+    required: False
+    default: 40
+    help: 'Specifies roughly where the message should be wrapped'
+  -b:
+    dest: 'preset'
+    action: 'append_const'
+    const: 'b'
+    default: ['']
+    required: False
+    help: 'Initiates Borg mode'
+  -d:
+    dest: 'preset'
+    action: 'append_const'
+    const: 'd'
+    default: [ '' ]
+    required: False
+    help: 'Causes the cow to appear deade'
+  -g:
+    dest: 'preset'
+    action: 'append_const'
+    const: 'g'
+    default: [ '' ]
+    required: False
+    help: 'Invokes greedy mode'
+  -p:
+    dest: 'preset'
+    action: 'append_const'
+    const: 'p'
+    default: [ '' ]
+    required: False
+    help: 'Causes a state of paranoia to come over the cow'
+  -s:
+    dest: 'preset'
+    action: 'append_const'
+    const: 's'
+    default: [ '' ]
+    required: False
+    help: 'Makes the cow appear thoroughly stoned'
+  -t:
+    dest: 'preset'
+    action: 'append_const'
+    const: 't'
+    default: [ '' ]
+    required: False
+    help: 'Yields a tired cow'
+  -w:
+    dest: 'preset'
+    action: 'append_const'
+    const: 'w'
+    default: [ '' ]
+    required: False
+    help: 'Somewhat the opposite of -t, and initiates wired mode'
+  -y:
+    dest: 'preset'
+    action: 'append_const'
+    const: 'y'
+    default: [ '' ]
+    required: False
+    help: 'Brings on the cow youthful appearancee'
+  -message:
+    action: 'store'
+    default: ' '
+    nargs: '?'
+    help: 'A string to wrap in the text bubble'
