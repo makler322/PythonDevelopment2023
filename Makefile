@@ -3,7 +3,7 @@
 # commands
 lint:
 	@isort development
-	@flake8 development
+	@flake8 development/PushPip
 
 test:
 	@pytest
