@@ -1,0 +1,5 @@
+brand
+buyer
+claim
+offer
+trust

@@ -21,6 +21,7 @@ class Parser(BaseModel):
         self,
         prog: str = 'Cowsay',
         description: str = 'Cowsay imitation',
+        args_path: Path = None,
     ):
         """
         Get params from config.
@@ -28,10 +29,11 @@ class Parser(BaseModel):
         Args:
             prog: Name of parse prog.
             description: Description of parse prog.
+            args_path: Path
         """
         super().__init__()
         self.parser = ArgumentParser(prog=prog, description=description)
-        self._add_args()
+        self._add_args(args_path)
 
     def parse_args(self) -> Namespace:
         """
@@ -42,17 +44,22 @@ class Parser(BaseModel):
         """
         return self.parser.parse_args()
 
-    def _add_args(self):
-        """Loop for adding args from config."""
+    def _add_args(self, path: Path):
+        """
+        Loop for adding args from config.
+
+        Args:
+            path: Path
+        """
         config_args = load_config(
-            Path(PushPip.__file__).parent / 'config.yml',
+            path if path else Path(PushPip.__file__).parent / 'config.yml',
         ).arguments
         for flag, flag_params in config_args.items():
             self.parser.add_argument(flag, **flag_params)
 
 
 class Worker(BaseModel):
-    """Parser class."""
+    """Worker class."""
 
     cow: str = 'default'
 

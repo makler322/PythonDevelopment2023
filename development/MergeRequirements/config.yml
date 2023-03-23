@@ -1,0 +1,11 @@
+arguments:
+  -d:
+    dest: 'dictionary'
+    action: 'store'
+    help: 'file of useful words'
+  -l:
+    dest: 'length'
+    action: 'store'
+    nargs: '?'
+    default: 5
+    help: 'length of used words'
