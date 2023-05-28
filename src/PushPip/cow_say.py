@@ -8,8 +8,8 @@ from typing import Any, Union
 from cowsay import cowsay, list_cows
 from pydantic import BaseModel
 
-from development import PushPip
-from development.config import load_config
+from src import PushPip
+from src.config import load_config
 
 
 class Parser(BaseModel):
