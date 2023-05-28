@@ -8,8 +8,8 @@ from typing import Callable, List
 
 from pydantic import BaseModel
 
-from development import MergeRequirements
-from development.PushPip.cow_say import Parser
+from src import MergeRequirements
+from src.PushPip.cow_say import Parser
 
 
 class Worker(BaseModel):

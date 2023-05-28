@@ -1,4 +1,4 @@
-from development.PushPip.cow_say import Worker
+from src.PushPip.cow_say import Worker
 from argparse import Namespace
 
 

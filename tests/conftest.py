@@ -1,6 +1,6 @@
 import pytest
 
-from development.PushPip.cow_say import Worker, Parser
+from src.PushPip.cow_say import Worker, Parser
 from argparse import Namespace
 
 
